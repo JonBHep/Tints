@@ -3,10 +3,62 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Tints"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Colours" Height="800" Width="1000" ContentRendered="Window_ContentRendered" WindowState="Maximized" Closing="Window_Closing">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="94"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="128"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
+            <TextBlock VerticalAlignment="Center" Margin="8 4">Background</TextBlock>
+            <ComboBox x:Name="BackCombo" VerticalAlignment="Center" Width="120" SelectionChanged="cboBack_SelectionChanged"></ComboBox>
+            <TextBlock VerticalAlignment="Center" Margin="8 4">Group</TextBlock>
+            <ComboBox x:Name="GroupCombo" VerticalAlignment="Top" Width="160" SelectionChanged="cboGroup_SelectionChanged" Margin="0,4,0,0"></ComboBox>
+            <TextBox x:Name="FindTextBox" Width="60" Margin="28 4 8 4" TextChanged="textboxFind_TextChanged"></TextBox>
+            <Button x:Name="FindButton" VerticalAlignment="Center" Margin="6 0" Width="60" IsEnabled="False" Click="buttonFind_Click">Find</Button>
+            <Button VerticalAlignment="Center" Margin="6,2" Padding="4" Width="80" Click="buttonArrange_Click" >Groups...</Button>
+            <Button VerticalAlignment="Center" Margin="6 0" Padding="4" Width="80" Click="buttonIdenticals_Click"  >Identicals...</Button>
+            <Button VerticalAlignment="Center" Margin="6 0" Padding="4" Width="80" Click="buttonListAll_Click" >List all...</Button>
+        </StackPanel>
+        <Button Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="6 0" Padding="4" Width="80" Click="btnClose_Click" >Close</Button>
 
+        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0">
+            <WrapPanel x:Name="WrapWrapPanel"></WrapPanel>
+        </ScrollViewer>
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0" Background="Ivory">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" VerticalAlignment="Center" Margin="8 0">Background 1</TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="8 0">Background 2</TextBlock>
+            <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="8 0">Foreground 1</TextBlock>
+            <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="8 0">Foreground 2</TextBlock>
+            <ComboBox x:Name="ComboBoxBk1" Grid.Row="0" Grid.Column="1" IsEditable="False" VerticalAlignment="Center" SelectionChanged="ComboBoxBk1_SelectionChanged"></ComboBox>
+            <ComboBox x:Name="ComboBoxBk2" Grid.Row="1" Grid.Column="1" IsEditable="False" VerticalAlignment="Center" SelectionChanged="ComboBoxBk2_SelectionChanged"></ComboBox>
+            <ComboBox x:Name="ComboBoxFg1" Grid.Row="2" Grid.Column="1" IsEditable="False" VerticalAlignment="Center" SelectionChanged="ComboBoxFg1_SelectionChanged"></ComboBox>
+            <ComboBox x:Name="ComboBoxFg2" Grid.Row="3" Grid.Column="1" IsEditable="False" VerticalAlignment="Center" SelectionChanged="ComboBoxFg2_SelectionChanged"></ComboBox>
+            <Grid x:Name="PanelBackOne" Grid.Column="2" Grid.Row="0" Grid.RowSpan="4" Background="White"></Grid>
+            <Grid x:Name="PanelBackTwo" Grid.Column="3" Grid.Row="0" Grid.RowSpan="4" Background="Moccasin"></Grid>
+            <TextBlock x:Name="PanelFront1A" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" TextAlignment="Center" FontSize="8" VerticalAlignment="Center">The quick brown fox jumps over the lazy dog</TextBlock>
+            <TextBlock x:Name="PanelFront1B" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" TextAlignment="Center" FontSize="16" VerticalAlignment="Center">The quick brown fox jumps over the lazy dog</TextBlock>
+            <TextBlock x:Name="PanelFront2A" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" TextAlignment="Center" FontSize="8" VerticalAlignment="Center">The quick brown fox jumps over the lazy dog</TextBlock>
+            <TextBlock x:Name="PanelFront2B" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" TextAlignment="Center" FontSize="16" VerticalAlignment="Center">The quick brown fox jumps over the lazy dog</TextBlock>
+        </Grid>
     </Grid>
 </Window>
